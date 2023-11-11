@@ -1,0 +1,107 @@
+/* General styles */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #0C164D, #190B22); /* Gradient background */
+}
+
+.solar-system {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sun styles */
+.sun {
+  position: absolute;
+  left: -25%; /* Adjust as necessary */
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%; /* Adjust the size as necessary */
+  height: auto;
+  aspect-ratio: 1 / 1; /* Keep the sun circle */
+  background-color: #FFD700; /* Sun color */
+  border-radius: 50%;
+}
+
+/* Generic planet styles */
+.planet {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: #FFF; /* Default color, to be overridden */
+}
+
+/* Individual planet styles with spacing */
+.mercury { left: 15%; width: 1%; height: auto; aspect-ratio: 1 / 1; background-color: #aaa9ad; }
+.venus { left: 25%; width: 2%; height: auto; aspect-ratio: 1 / 1; background-color: #bf5700; }
+.earth { left: 35%; width: 2%; height: auto; aspect-ratio: 1 / 1; background-color: #1e90ff; }
+.mars { left: 45%; width: 1.5%; height: auto; aspect-ratio: 1 / 1; background-color: #b22222; }
+.jupiter { left: 55%; width: 5%; height: auto; aspect-ratio: 1 / 1; background-color: #d2b48c; }
+.saturn { left: 65%; width: 4.5%; height: auto; aspect-ratio: 1 / 1; background-color: #f4a460; }
+.uranus { left: 75%; width: 3%; height: auto; aspect-ratio: 1 / 1; background-color: #93ccea; }
+.neptune { left: 85%; width: 3%; height: auto; aspect-ratio: 1 / 1; background-color: #4169e1; }
+
+/* "Back to Planets" button */
+#scroll-to-top {
+  display: none; /* Hidden by default, will be shown when a planet is clicked */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: ease-out;
+}
+
+#scroll-to-top:hover {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background on hover */
+  color: rgb(227, 70, 70);
+}
+
+/* Planet info styles */
+#planet-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  z-index: 1000;
+  /* Hide the container by default */
+  opacity: 0;
+  pointer-events: none; /* Disable pointer events when hidden */
+  transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
+}
+
+#planet-info {
+  text-align: center; /* Center the text */
+  background-color: #fff; /* White background for planet info */
+  padding: 100px;
+  border-radius: 10px;
+  max-width: 100%;
+  min-height: 100%;
+  transition: opacity 0.3s ease-in-out; /* Add transition for opacity */
+}
+
+/* When planet info is hidden, set opacity to 0 and disable pointer events */
+#planet-info-container:not(.show-info) #planet-info {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* When planet info is visible, set opacity to 1 and enable pointer events */
+#planet-info-container.show-info #planet-info {
+  opacity: 1;
+  pointer-events: auto;
+}
