@@ -23,7 +23,6 @@ async function fetchPlanetData() {
 async function showPlanetInfo(planetName) {
   console.log(`Fetching data for: ${planetName}`); 
   const bodies = await fetchPlanetData();
-  //console.log(bodies); // Genom det kunde jag hitta bokstavsfel i html för planeterna
   const bodyData = bodies.find(body => body.name.toLowerCase() === planetName.toLowerCase());
 
   if (bodyData) {
@@ -39,17 +38,17 @@ async function showPlanetInfo(planetName) {
       <div><strong>Moons:</strong> ${bodyData.moons.length ? bodyData.moons.join(', ') : 'None'}</div>`;
     infoDiv.innerHTML = htmlContent;
     infoDiv.style.display = 'block';
-    document.getElementById('scroll-to-top').style.display = 'block'; // Show the button
-    infoDiv.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the infoDiv
+    document.getElementById('scroll-to-top').style.display = 'block';
+    infoDiv.scrollIntoView({ behavior: 'smooth' });
   } else {
     console.error(`No data found for planet: ${planetName}`);
   }
 }
 
 function scrollToPlanets() {
-  document.getElementById('planet-info').style.display = 'none'; // Hide the planet info
-  document.getElementById('scroll-to-top').style.display = 'none'; // Hide the button
-  document.querySelector('.solar-system').scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the solar system
+  document.getElementById('planet-info').style.display = 'none';
+  document.getElementById('scroll-to-top').style.display = 'none';
+  document.querySelector('.solar-system').scrollIntoView({ behavior: 'smooth' });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
